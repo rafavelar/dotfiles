@@ -1,0 +1,103 @@
+[core]
+	quotepath = false
+	editor = vim
+	excludesfile = /Users/Rafael/.gitignore_global
+	commentChar = ";"
+	pager = diff-so-fancy | less --tabs=4 -RFX
+[difftool "sourcetree"]
+	cmd = opendiff \"$LOCAL\" \"$REMOTE\"
+	path =
+[mergetool "sourcetree"]
+	cmd = /Applications/SourceTree.app/Contents/Resources/opendiff-w.sh \"$LOCAL\" \"$REMOTE\" -ancestor \"$BASE\" -merge \"$MERGED\"
+	trustExitCode = true
+[user]
+	name = ravelar
+	email = rafaelksd@live.com
+[commit]
+	template = /Users/Rafael/.stCommitMsg
+[alias]
+	st = status
+	au = add -u .
+	ci = commit
+	ciam = commit --amend
+	br = branch
+	co = checkout
+	d = diff
+	lg = log
+	lp = log -p
+	lt = log --topo-order
+	gl = log --graph
+	#glp = log --graph --pretty=oneline --abbrev-commit
+	glt = log --pretty=format:'%h : %s' --topo-order --graph
+	rl = reflog
+	sb = show-branch
+	brm = branch --merged
+	brrm = branch --no-merged
+	rnc = revert --no-commit
+	com = checkout master
+	hard = reset --hard
+	me = merge --no-commit --no-f
+	ls = ls-files
+	pu = pull
+	cp = cherry-pick
+	cpnx = cherry-pick --no-commit -x
+	# show conflicting merge in gitk:
+	gitkconflict = !gitk --left-right HEAD...MERGE_HEAD
+	#prune all tracking local branches that have been removed from remote:
+	prune-all = !git remote | xargs -n 1 git remote prune
+	#show full history in gitk (including "delete" branches and stashes)
+	history-all = !gitk --all $( git fsck | awk '/dangling commit/ {print $3}' )
+	#show list of contributors in descending order by number of commits
+	rank = shortlog -sn --no-merges
+	# given a string for an author, try to figure out full name and email:
+	whois = !sh -c 'git log -i -1 --pretty-\"format:%an <%ae>\n\" --author=\"$1\"' -
+	# given any git object, try to show it briefly
+	whatis = show -s --pretty='tformat:%h (%s, %ad)' --date=short
+	# Search for a given string in all patches and print commit messages
+	# example: search for any commit that adds or removes string "foobar"
+	# 	git searchcommits foobar
+	# example: search commits for string "foobar" in directory src/lib
+	# 	git searchcommits foobar src/lib
+	# example: search commits for "foobar", print full diff of commit with 1 line context
+	# 	git searchcommits foobar --pickaxe-all -U1 src/lib
+	searchcommits = "!f() { query=\"$1\"; shift; git log -S\"$query\" \"$@\"; }; f \"$@\""
+	ds = !git --no-pager diff --stat -N -w
+	changes = log --oneline --reverse
+	# fork = !sh -c 'git rev-list --boundary $1...!2 | grep ^- | cut -c2-'
+	graph = log --graph --online --decorate
+	info = config --list
+	pop = !git stash apply && git stash clear
+	staged = diff --cached
+	summary = log --online
+	tags = tag -n1 -l
+	dfdiff = diff -w --diff-filter=AM
+	lol = log --pretty=oneline --abbrev-commit --graph --decorate
+	my = log --pretty=format:'%Cred%h %C(yellow)%d %Cblue%ad%Creset %cn %Cgreen%s%Creset' --graph --relative-date
+
+	# grafo = log --oneline --decorate --graph
+[filter "lfs"]
+   clean = git-lfs clean -- %f
+   smudge = git-lfs smudge -- %f
+   process = git-lfs filter-process
+   required = true
+[pull]
+	rebase = true
+[filesystem "Oracle Corporation|1.8.0_131|/dev/disk1s5"]
+	timestampResolution = 1014 milliseconds
+	minRacyThreshold = 0 nanoseconds
+[credential]
+	helper = osxkeychain
+[color]
+	ui = true
+[color "diff-highlight"]
+	oldNormal = red bold
+	oldHighlight = red bold 52
+	newNormal = green bold
+	newHighlight = green bold 22
+[color "diff"]
+	meta = 11
+	frag = magenta bold
+	commit = yellow bold
+	old = red bold
+	new = green bold
+	whitespace = red reverse
