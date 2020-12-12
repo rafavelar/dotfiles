@@ -81,7 +81,7 @@
    process = git-lfs filter-process
    required = true
 [pull]
-	rebase = true
+	rebase = false
 [filesystem "Oracle Corporation|1.8.0_131|/dev/disk1s5"]
 	timestampResolution = 1014 milliseconds
 	minRacyThreshold = 0 nanoseconds
