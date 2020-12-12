@@ -40,8 +40,9 @@ alias rgf='rg --files | rg'
 export EDITOR='vim'
 
 # Maven
-export M2_HOME="/Applications/sts-bundle/apache-maven-3.2.1"
+export M2_HOME="/Users/Rafael/dev/apache/apache-maven-3.6.3"
 export MAVEN_OPTS="-Xmx1024m -XX:MaxPermSize=512m"
+export PATH=$PATH:$M2_HOME/bin
 
 # Apache Ant
 export ANT_HOME=/Users/Rafael/dev/apache-ant-1.10.2
