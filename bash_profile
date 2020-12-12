@@ -48,6 +48,9 @@ export PATH=$PATH:$M2_HOME/bin
 export ANT_HOME=/Users/Rafael/dev/apache-ant-1.10.2
 export PATH=${PATH}:${M2_HOME}/bin:$ANT_HOME/bin
 
+#mysql
+export PATH="/usr/local/opt/mysql@5.7/bin:$PATH"
+
 # Postgresql
 export PATH=/Library/PostgreSQL/9.5/bin:$PATH
 
