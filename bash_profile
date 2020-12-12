@@ -58,7 +58,7 @@ export PATH=/Library/PostgreSQL/9.5/bin:$PATH
 export PATH="/usr/local/sbin:$PATH"
 
 # Starship
-# eval "$(starship init zsh)"
+eval "$(starship init zsh)"
 
 # Liquibase
 export PATH="/usr/local/opt/liquibase/bin:$PATH"
